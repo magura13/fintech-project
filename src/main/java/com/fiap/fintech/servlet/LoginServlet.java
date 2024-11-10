@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("userId", user.getUserId());
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home");
         } else {
             request.setAttribute("error", "Email ou senha inválidos");
             request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -35,6 +35,7 @@ public class IncomeDAO {
     }
 
     public List<Income> getAllIncomesByUserId(int userId) {
+        System.out.println("IncomeDAO: Buscando receitas para userId = " + userId);
         List<Income> incomes = new ArrayList<>();
         String sql = "SELECT * FROM INCOMES WHERE USER_ID = ?";
 
@@ -42,6 +43,7 @@ public class IncomeDAO {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, userId);
+
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -56,9 +58,8 @@ public class IncomeDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("IncomeDAO: Erro ao buscar receitas para userId = " + userId + " - " + e.getMessage());
         }
-        System.out.println(incomes);
         return incomes;
     }
 }

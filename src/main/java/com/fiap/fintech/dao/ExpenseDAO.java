@@ -54,9 +54,8 @@ public class ExpenseDAO {
                 );
                 expenses.add(expense);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("ExpenseDAO: Erro ao buscar despesas para userId = " + userId + " - " + e.getMessage());
         }
         return expenses;
     }
