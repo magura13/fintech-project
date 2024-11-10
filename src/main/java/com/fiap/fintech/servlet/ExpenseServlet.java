@@ -44,7 +44,7 @@ public class ExpenseServlet extends HttpServlet {
 
             boolean isAdded = expenseDAO.addExpense(expense);
             if (isAdded) {
-                response.sendRedirect("home.jsp?success=true");
+                response.sendRedirect("home");
             } else {
                 response.sendRedirect("expense_form.jsp?error=true");
             }

@@ -4,6 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Receita</title>
+  <script>
+    function formatCurrency(input) {
+      let value = input.value.replace(/\D/g, "");
+      value = (parseInt(value, 10) / 100).toFixed(2);
+      input.value = value.replace(".", ".");
+    }
+  </script>
 </head>
 <body>
 <h2>Cadastro de Receita</h2>
@@ -12,7 +19,7 @@
   <input type="text" id="description" name="description" required><br>
 
   <label for="amount">Valor:</label>
-  <input type="number" id="amount" name="amount" step="0.01" required><br>
+  <input type="text" id="amount" name="amount" oninput="formatCurrency(this)" required><br>
 
   <label for="date">Data:</label>
   <input type="date" id="date" name="incomeDate" required><br>

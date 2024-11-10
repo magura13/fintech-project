@@ -43,7 +43,7 @@ public class IncomeServlet extends HttpServlet {
 
             boolean isAdded = incomeDAO.addIncome(income);
             if (isAdded) {
-                response.sendRedirect("home.jsp?success=true");
+                response.sendRedirect("home");
             } else {
                 response.sendRedirect("income_form.jsp?error=true");
             }

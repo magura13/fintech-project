@@ -36,15 +36,12 @@ public class HomeServlet extends HttpServlet {
         double totalIncome = incomes.stream()
                 .mapToDouble(Income::getAmount)
                 .sum();
-        System.out.println("Total de Receitas: " + totalIncome);
 
         double totalExpense = expenses.stream()
                 .mapToDouble(Expense::getAmount)
                 .sum();
-        System.out.println("Total de Despesas: " + totalExpense);
 
         double balance = totalIncome - totalExpense;
-        System.out.println("Saldo Atual: " + balance);
 
         request.setAttribute("incomes", incomes);
         request.setAttribute("expenses", expenses);
