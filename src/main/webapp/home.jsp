@@ -13,6 +13,33 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Controle Financeiro</h1>
 
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Receitas</h5>
+                    <p class="card-text">R$ ${totalIncome}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Despesas</h5>
+                    <p class="card-text">R$ ${totalExpense}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Saldo Atual</h5>
+                    <p class="card-text">R$ ${balance}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Add options -->
     <div class="d-flex justify-content-center mb-4">
         <a href="income_form.jsp" class="btn btn-success me-2">Cadastrar Receita</a>

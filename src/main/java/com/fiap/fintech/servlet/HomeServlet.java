@@ -33,8 +33,25 @@ public class HomeServlet extends HttpServlet {
         List<Income> incomes = incomeDAO.getAllIncomesByUserId(userId);
         List<Expense> expenses = expenseDAO.getAllExpensesByUserId(userId);
 
+        double totalIncome = incomes.stream()
+                .mapToDouble(Income::getAmount)
+                .sum();
+        System.out.println("Total de Receitas: " + totalIncome);
+
+        double totalExpense = expenses.stream()
+                .mapToDouble(Expense::getAmount)
+                .sum();
+        System.out.println("Total de Despesas: " + totalExpense);
+
+        double balance = totalIncome - totalExpense;
+        System.out.println("Saldo Atual: " + balance);
+
         request.setAttribute("incomes", incomes);
         request.setAttribute("expenses", expenses);
+        request.setAttribute("totalIncome", totalIncome);
+        request.setAttribute("totalExpense", totalExpense);
+        request.setAttribute("balance", balance);
+
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 }

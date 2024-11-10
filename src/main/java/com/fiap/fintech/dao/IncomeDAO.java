@@ -35,7 +35,6 @@ public class IncomeDAO {
     }
 
     public List<Income> getAllIncomesByUserId(int userId) {
-        System.out.println("IncomeDAO: Buscando receitas para userId = " + userId);
         List<Income> incomes = new ArrayList<>();
         String sql = "SELECT * FROM INCOMES WHERE USER_ID = ?";
 
