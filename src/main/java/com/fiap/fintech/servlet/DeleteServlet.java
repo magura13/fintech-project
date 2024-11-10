@@ -31,9 +31,8 @@ public class DeleteServlet extends HttpServlet {
 
                 if ("income".equals(type)) {
                     isDeleted = incomeDAO.deleteIncome(id);
-                    System.out.println("Exclusão de income resultado: " + isDeleted);
                 } else if ("expense".equals(type)) {
-                    System.out.println("Exclusão de expense resultado: " + isDeleted);
+                    isDeleted = expenseDAO.deleteExpense(id);
                 }
 
                 if (isDeleted) {
@@ -42,7 +41,6 @@ public class DeleteServlet extends HttpServlet {
                     response.sendRedirect("home?error=Não foi possível remover o " + type);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("ID inválido fornecido: " + idParam);
                 response.sendRedirect("home?error=ID inválido");
             }
         } else {

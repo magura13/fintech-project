@@ -46,6 +46,7 @@ public class ExpenseDAO {
 
             while (rs.next()) {
                 Expense expense = new Expense(
+                        rs.getInt("EXPENSE_ID"),
                         rs.getInt("USER_ID"),
                         rs.getString("SOURCE"),
                         rs.getString("DESCRIPTION"),
@@ -58,6 +59,20 @@ public class ExpenseDAO {
             System.err.println("ExpenseDAO: Erro ao buscar despesas para userId = " + userId + " - " + e.getMessage());
         }
         return expenses;
+    }
+
+    public boolean deleteExpense(int expenseId) {
+        String sql = "DELETE FROM EXPENSES WHERE EXPENSE_ID = ?";
+
+        try (Connection conn = ConnectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, expenseId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Erro ao excluir despesa com ID: " + expenseId + " - " + e.getMessage());
+            return false;
+        }
     }
 
 }
