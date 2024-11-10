@@ -47,6 +47,7 @@ public class IncomeDAO {
 
             while (rs.next()) {
                 Income income = new Income(
+                        rs.getInt("INCOME_ID"),
                         rs.getInt("USER_ID"),
                         rs.getString("SOURCE"),
                         rs.getString("DESCRIPTION"),
@@ -60,5 +61,20 @@ public class IncomeDAO {
             System.err.println("IncomeDAO: Erro ao buscar receitas para userId = " + userId + " - " + e.getMessage());
         }
         return incomes;
+    }
+
+    public boolean deleteIncome(int incomeId) {
+        String sql = "DELETE FROM INCOMES WHERE INCOME_ID = ?";
+
+        try (Connection conn = ConnectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, incomeId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Erro ao deletar receita: " + e.getMessage());
+            return false;
+        }
     }
 }

@@ -51,19 +51,25 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Fonte</th>
             <th>Descrição</th>
             <th>Valor</th>
             <th>Data</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="income" items="${incomes}">
             <tr>
+                <td>${income.incomeId}</td>
                 <td>${income.source}</td>
                 <td>${income.description}</td>
-                <td>R$ ${income.amount}</td>
+                <td>${income.amount}</td>
                 <td>${income.incomeDate}</td>
+                <td>
+                    <a href="delete?type=income&id=${income.incomeId}" class="btn btn-danger">Excluir</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -74,19 +80,25 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Fonte</th>
             <th>Descrição</th>
             <th>Valor</th>
             <th>Data</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="expense" items="${expenses}">
             <tr>
+                <td>${expense.expenseId}</td>
                 <td>${expense.source}</td>
                 <td>${expense.description}</td>
-                <td>R$ ${expense.amount}</td>
+                <td>${expense.amount}</td>
                 <td>${expense.expenseDate}</td>
+                <td>
+                    <a href="delete?type=expense&id=${expense.expenseId}" class="btn btn-danger">Excluir</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

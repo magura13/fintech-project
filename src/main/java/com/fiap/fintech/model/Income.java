@@ -10,6 +10,15 @@ public class Income {
     private double amount;
     private Date incomeDate;
 
+    public Income(int incomeId, int userId, String source, String description, double amount, Date incomeDate) {
+        this.incomeId = incomeId;
+        this.userId = userId;
+        this.source = source;
+        this.description = description;
+        this.amount = amount;
+        this.incomeDate = incomeDate;
+    }
+    
     public Income(int userId, String source, String description, double amount, Date incomeDate) {
         this.userId = userId;
         this.source = source;
