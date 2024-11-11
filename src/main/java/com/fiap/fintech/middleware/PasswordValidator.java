@@ -43,7 +43,6 @@ public class PasswordValidator {
             }
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            System.out.println("Erro ao gerar o hash da senha: " + e.getMessage());
             throw new RuntimeException("Erro ao gerar o hash da senha", e);
         }
     }

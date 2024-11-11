@@ -30,7 +30,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar usuário pelo email: " + email + " - " + e.getMessage());
+            System.err.println("Err: " + email + " - " + e.getMessage());
         }
         return user;
     }
@@ -47,15 +47,14 @@ public class UserDAO {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Usuário cadastrado com sucesso: " + user.getEmail());
                 return true;
             } else {
-                System.out.println("Falha ao cadastrar usuário: " + user.getEmail());
+                System.out.println("err: " + user.getEmail());
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao cadastrar usuário: " + user.getEmail() + " - " + e.getMessage());
-            throw e; // Lança a exceção para que o servlet possa lidar com ela
+            System.out.println("err: " + user.getEmail() + " - " + e.getMessage());
+            throw e;
         }
         return false;
     }

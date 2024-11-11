@@ -24,12 +24,12 @@ public class IncomeDAO {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Receita cadastrada com sucesso: " + income.getDescription());
+                System.out.println("err: " + income.getDescription());
                 return true;
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir receita: " + e.getMessage());
+            System.err.println("err:" + e.getMessage());
         }
         return false;
     }
@@ -58,7 +58,7 @@ public class IncomeDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("IncomeDAO: Erro ao buscar receitas para userId = " + userId + " - " + e.getMessage());
+            System.err.println("err: " + userId + " - " + e.getMessage());
         }
         return incomes;
     }
@@ -73,7 +73,7 @@ public class IncomeDAO {
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar receita: " + e.getMessage());
+            System.err.println("err " + e.getMessage());
             return false;
         }
     }

@@ -24,12 +24,12 @@ public class ExpenseDAO {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Despesa cadastrada com sucesso: " + expense.getDescription());
+                System.out.println("err: " + expense.getDescription());
                 return true;
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir despesa: " + e.getMessage());
+            System.err.println("err: " + e.getMessage());
         }
         return false;
     }
@@ -56,7 +56,7 @@ public class ExpenseDAO {
                 expenses.add(expense);
             }
         } catch (SQLException e) {
-            System.err.println("ExpenseDAO: Erro ao buscar despesas para userId = " + userId + " - " + e.getMessage());
+            System.err.println("err: " + userId + " - " + e.getMessage());
         }
         return expenses;
     }
@@ -70,7 +70,7 @@ public class ExpenseDAO {
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            System.err.println("Erro ao excluir despesa com ID: " + expenseId + " - " + e.getMessage());
+            System.err.println("err: " + expenseId + " - " + e.getMessage());
             return false;
         }
     }

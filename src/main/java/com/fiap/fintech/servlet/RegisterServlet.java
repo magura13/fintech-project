@@ -37,12 +37,12 @@ public class RegisterServlet extends HttpServlet {
             if (userCreated) {
                 response.sendRedirect("login.jsp");
             } else {
-                request.setAttribute("error", "Erro ao cadastrar o usuário. Tente novamente.");
+                request.setAttribute("error", "err");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("error", "Erro no banco de dados: " + e.getMessage());
+            request.setAttribute("error", "err " + e.getMessage());
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
     }

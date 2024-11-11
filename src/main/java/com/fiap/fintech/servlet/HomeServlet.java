@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
+import java.text.DecimalFormat;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
@@ -43,11 +44,13 @@ public class HomeServlet extends HttpServlet {
 
         double balance = totalIncome - totalExpense;
 
+        DecimalFormat df = new DecimalFormat("#.00");
+
         request.setAttribute("incomes", incomes);
         request.setAttribute("expenses", expenses);
-        request.setAttribute("totalIncome", totalIncome);
-        request.setAttribute("totalExpense", totalExpense);
-        request.setAttribute("balance", balance);
+        request.setAttribute("totalIncome", df.format(totalIncome));
+        request.setAttribute("totalExpense", df.format(totalExpense));
+        request.setAttribute("balance", df.format(balance));
 
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

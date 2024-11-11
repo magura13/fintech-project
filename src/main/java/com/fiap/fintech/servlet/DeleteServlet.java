@@ -21,9 +21,6 @@ public class DeleteServlet extends HttpServlet {
         String type = request.getParameter("type");
         String idParam = request.getParameter("id");
 
-        System.out.println("Tipo recebido: " + type);
-        System.out.println("ID recebido: " + idParam);
-
         if (idParam != null && !idParam.isEmpty() && type != null) {
             try {
                 int id = Integer.parseInt(idParam);
@@ -38,13 +35,13 @@ public class DeleteServlet extends HttpServlet {
                 if (isDeleted) {
                     response.sendRedirect("home");
                 } else {
-                    response.sendRedirect("home?error=Não foi possível remover o " + type);
+                    response.sendRedirect("home" + type);
                 }
             } catch (NumberFormatException e) {
-                response.sendRedirect("home?error=ID inválido");
+                response.sendRedirect("home");
             }
         } else {
-            response.sendRedirect("home?error=Parâmetros inválidos");
+            response.sendRedirect("home");
         }
     }
 }

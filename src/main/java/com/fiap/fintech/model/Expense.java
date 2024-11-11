@@ -10,7 +10,6 @@ public class Expense {
     private double amount;
     private Date expenseDate;
 
-    // Construtor para novos registros (sem expenseId)
     public Expense(int userId, String source, String description, double amount, Date expenseDate) {
         this.userId = userId;
         this.source = source;
@@ -19,7 +18,6 @@ public class Expense {
         this.expenseDate = expenseDate;
     }
 
-    // Construtor para registros existentes (com expenseId)
     public Expense(int expenseId, int userId, String source, String description, double amount, Date expenseDate) {
         this.expenseId = expenseId;
         this.userId = userId;

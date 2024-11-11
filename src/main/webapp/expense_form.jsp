@@ -4,6 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Despesa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .expense-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .expense-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .expense-card h2 {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #343a40;
+        }
+    </style>
     <script>
         function formatCurrency(input) {
             let value = input.value.replace(/\D/g, "");
@@ -13,25 +36,39 @@
     </script>
 </head>
 <body>
-<h2>Cadastro de Despesa</h2>
-<form action="expense" method="POST">
-    <label for="description">Descrição:</label>
-    <input type="text" id="description" name="description" required><br>
+<div class="expense-container">
+    <div class="expense-card">
+        <h2 class="text-center">Cadastro de Despesa</h2>
+        <form action="expense" method="POST">
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="description" name="description" required>
+            </div>
 
-    <label for="amount">Valor:</label>
-    <input type="text" id="amount" name="amount" oninput="formatCurrency(this)" required><br>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Valor</label>
+                <input type="text" class="form-control" id="amount" name="amount" oninput="formatCurrency(this)" required>
+            </div>
 
-    <label for="date">Data:</label>
-    <input type="date" id="date" name="expenseDate" required><br>
+            <div class="mb-3">
+                <label for="date" class="form-label">Data</label>
+                <input type="date" class="form-control" id="date" name="expenseDate" required>
+            </div>
 
-    <label for="source">Fonte:</label>
-    <input type="text" id="source" name="source" required><br>
+            <div class="mb-3">
+                <label for="source" class="form-label">Fonte</label>
+                <input type="text" class="form-control" id="source" name="source" required>
+            </div>
 
-    <button type="submit">Cadastrar Despesa</button>
-</form>
+            <button type="submit" class="btn btn-danger w-100">Cadastrar Despesa</button>
+        </form>
 
-<c:if test="${not empty error}">
-    <p style="color:red;">${error}</p>
-</c:if>
+        <c:if test="${not empty error}">
+            <div class="alert alert-danger mt-3 text-center">${error}</div>
+        </c:if>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

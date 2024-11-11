@@ -8,12 +8,12 @@ public class TestConnection {
     public static void main(String[] args) {
         try (Connection connection = ConnectionManager.getConnection()) {
             if (connection != null) {
-                System.out.println("Conexão estabelecida com sucesso!");
+                System.out.println("conected");
             } else {
-                System.out.println("Falha ao conectar.");
+                System.out.println("err");
             }
         } catch (SQLException e) {
-            System.err.println("Erro de conexão: " + e.getMessage());
+            System.err.println("err=  " + e.getMessage());
         }
     }
 }
